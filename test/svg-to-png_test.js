@@ -26,19 +26,6 @@
 	var svg_to_png = require('../lib/svg-to-png.js');
 
 
-	exports.awesome = {
-		setUp: function(done) {
-			// setup here
-			done();
-		},
-		'no args': function(test) {
-			test.expect(1);
-			// tests here
-			test.equal(svg_to_png.awesome(), 'awesome', 'should be awesome.');
-			test.done();
-		}
-	};
-
 	exports.convert = {
 		setUp: function(done) {
 			// setup here
