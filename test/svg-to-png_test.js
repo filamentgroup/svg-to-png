@@ -35,6 +35,9 @@
 			if( fs.existsSync( "test/output/bear.png" ) ){
 				fs.unlinkSync( "test/output/bear.png" );
 			}
+			if( fs.existsSync( "test/output/png/bear.png" ) ){
+				fs.unlinkSync( "test/output/png/bear.png" );
+			}
 			done();
 		},
 		'no args': function(test) {
@@ -53,20 +56,21 @@
 			}, Error, "Should throw output error" );
 			test.done();
 		},
-		'two args - no opts': function(test) {
+		'two args': function(test) {
 			test.expect(1);
 			// tests here
-			test.throws( function(){
-				svg_to_png.convert("test/files", "test/output", {});
-			}, Error, "Should throw opts.dest error" );
-			test.done();
-		},
-		'two args - dest': function(test) {
-			test.expect(1);
-			// tests here
-			svg_to_png.convert("test/files", "", { dest: "test/output" })
+			svg_to_png.convert("test/files", "test/output" )
 			.then( function(){
 				test.ok( fs.existsSync( "test/output/bear.png" ) );
+				test.done();
+			});
+		},
+		'two args w/ pngout': function(test) {
+			test.expect(1);
+			// tests here
+			svg_to_png.convert("test/files", "test/output", { pngfolder: "png" } )
+			.then( function(){
+				test.ok( fs.existsSync( "test/output/png/bear.png" ) );
 				test.done();
 			});
 		}
