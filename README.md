@@ -7,7 +7,7 @@ Install the module with: `npm install svg-to-png`
 
 ```javascript
 var svg_to_png = require('svg-to-png');
-svg_to_png.convert("input", "", {dest: "output"}); // async, returns
+svg_to_png.convert("input", "output"); // async, returns
 promise
 
 .then( function(){
@@ -21,7 +21,7 @@ promise
 
 Takes input, output special folder, and an options hash that include:
 
-dest: Your actual output folder
+pngfolder: A subdirectory (in the output) you might want the files to go into, normally ""
 defaultWidth: normally 400px
 defaultHeight: normally 300px
 
@@ -33,6 +33,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 v0.1.0 - Hey, released this thing
+v0.2.0 - API change
 
 ## License
 Copyright (c) 2013 Jeffrey Lembeck/Filament Group  
