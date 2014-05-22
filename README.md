@@ -1,5 +1,7 @@
 # svg-to-png [![Build Status](https://secure.travis-ci.org/filamentgroup/svg-to-png.png?branch=master)](http://travis-ci.org/filamentgroup/svg-to-png)
 
+[![Filament Group](http://filamentgroup.com/images/fg-logo-positive-sm-crop.png) ](http://www.filamentgroup.com/)
+
 Converts SVGs to PNGs
 
 ## Getting Started
