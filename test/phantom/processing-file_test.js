@@ -3,7 +3,7 @@
 	"use strict";
 
 	var fs = require( 'fs' );
-	var Pfile = require( '../../lib/processing-file' );
+	var Pfile = require( '..' + fs.separator + '..' + fs.separator + 'lib' + fs.separator + 'processing-file' );
 
 	var bearSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="62.905px">\n' +
 '<path d="M11.068,34.558c-1.585-2.365-2.595-5.098-2.939-8.106c-0.344,0.092-0.666,0.161-1.033,0.161\n' +
@@ -21,14 +21,14 @@
 
 	exports.constructor = {
 		setup: function(){
-			this.pfile = new Pfile( fs.workingDirectory + "/test/files/bear.svg" );
+			this.pfile = new Pfile( fs.workingDirectory + fs.separator + "test" + fs.separator + "files" + fs.separator + "bear.svg" );
 		},
 		teardown: function( done ){
 			done();
 		},
 		'constructor': function( test ){
 			test.equal( this.pfile.filename, "bear.svg", "The file should be named bear.svg" );
-			test.equal( this.pfile.pathdir, fs.workingDirectory + "/test/files", "The pathdir isn't correct" );
+			test.equal( this.pfile.pathdir, fs.workingDirectory + fs.separator + "test" + fs.separator + "files", "The pathdir isn't correct" );
 			test.ok( this.pfile.isSvg, "It's supposed to be an svg" );
 			test.equal( this.pfile.filenamenoext, "bear", "The filenamenoext should be bear" );
 		},
