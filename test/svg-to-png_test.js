@@ -22,8 +22,9 @@
 (function( exports ){
 	'use strict';
 
+	var path = require( 'path' );
 	var fs = require( 'fs' );
-	var svg_to_png = require('../lib/svg-to-png.js');
+	var svg_to_png = require(path.join( "..", "lib", "svg-to-png.js") );
 
 
 	exports.convert = {
@@ -32,11 +33,11 @@
 			done();
 		},
 		tearDown: function( done ){
-			if( fs.existsSync( "test/output/bear.png" ) ){
-				fs.unlinkSync( "test/output/bear.png" );
+			if( fs.existsSync( path.join( "test", "output", "bear.png" )) ){
+				fs.unlinkSync( path.join("test", "output", "bear.png") );
 			}
-			if( fs.existsSync( "test/output/png/bear.png" ) ){
-				fs.unlinkSync( "test/output/png/bear.png" );
+			if( fs.existsSync( path.join( "test", "output", "png", "bear.png" )) ){
+				fs.unlinkSync( path.join( "test", "output", "png", "bear.png") );
 			}
 			done();
 		},
@@ -52,25 +53,25 @@
 			test.expect(1);
 			// tests here
 			test.throws( function(){
-				svg_to_png.convert("test/files");
+				svg_to_png.convert(path.join("test", "files"));
 			}, Error, "Should throw output error" );
 			test.done();
 		},
 		'two args': function(test) {
 			test.expect(1);
 			// tests here
-			svg_to_png.convert("test/files", "test/output" )
+			svg_to_png.convert(path.join("test", "files"), path.join( "test","output") )
 			.then( function(){
-				test.ok( fs.existsSync( "test/output/bear.png" ) );
+				test.ok( fs.existsSync( path.join( "test", "output", "bear.png" ) ) );
 				test.done();
 			});
 		},
 		'two args w/ pngout': function(test) {
 			test.expect(1);
 			// tests here
-			svg_to_png.convert("test/files", "test/output", { pngfolder: "png" } )
+			svg_to_png.convert(path.join("test", "files"), path.join("test", "output"), { pngfolder: "png" } )
 			.then( function(){
-				test.ok( fs.existsSync( "test/output/png/bear.png" ) );
+				test.ok( fs.existsSync( path.join( "test", "output", "png", "bear.png" )) );
 				test.done();
 			});
 		}
