@@ -57,7 +57,7 @@
 			}, Error, "Should throw output error" );
 			test.done();
 		},
-		'two args': function(test) {
+		'two args - first is dir': function(test) {
 			test.expect(1);
 			// tests here
 			svg_to_png.convert(path.join("test", "files"), path.join( "test","output") )
@@ -66,10 +66,53 @@
 				test.done();
 			});
 		},
-		'two args w/ pngout': function(test) {
+		'two args - first is dir w/ pngout': function(test) {
 			test.expect(1);
 			// tests here
 			svg_to_png.convert(path.join("test", "files"), path.join("test", "output"), { pngfolder: "png" } )
+			.then( function(){
+				test.ok( fs.existsSync( path.join( "test", "output", "png", "bear.png" )) );
+				test.done();
+			});
+		}
+	};
+	exports.convertWithDir = {
+		setUp: function(done) {
+			// setup here
+			done();
+		},
+		tearDown: function( done ){
+			if( fs.existsSync( path.join( "test", "output", "bear.png" )) ){
+				fs.unlinkSync( path.join("test", "output", "bear.png") );
+			}
+			if( fs.existsSync( path.join( "test", "output", "png", "bear.png" )) ){
+				fs.unlinkSync( path.join( "test", "output", "png", "bear.png") );
+			}
+			done();
+		},
+		'two args - first is file that doesn\'t exist': function(test) {
+			test.expect(1);
+			// tests here
+			svg_to_png.convert( path.join("test", "files", "foo.svg"), path.join( "test","output") )
+			.then( function(){
+			}, function(err){
+				test.ok( err );
+				test.done();
+			});
+		},
+		'two args - first is file': function(test) {
+			test.expect(1);
+			// tests here
+			svg_to_png.convert(path.join("test", "files", "bear.svg"), path.join( "test","output") )
+			.then( function(){
+				test.ok( fs.existsSync( path.join( "test", "output", "bear.png" ) ) );
+				test.done();
+			});
+		},
+		'two args - first is file w/ pngout': function(test) {
+			test.expect(1);
+			// tests here
+			svg_to_png.convert(path.join("test", "files", "bear.svg"), path.join("test", "output"), { pngfolder: "png" } )
 			.then( function(){
 				test.ok( fs.existsSync( path.join( "test", "output", "png", "bear.png" )) );
 				test.done();
