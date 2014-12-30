@@ -19,6 +19,7 @@
 */
 
 /*global require:true*/
+/*global __dirname:true*/
 (function( exports ){
 	'use strict';
 
@@ -53,14 +54,14 @@
 			test.expect(1);
 			// tests here
 			test.throws( function(){
-				svg_to_png.convert(path.join("test", "files"));
+				svg_to_png.convert(path.resolve(path.join(__dirname, "files")));
 			}, Error, "Should throw output error" );
 			test.done();
 		},
 		'two args - first is dir': function(test) {
 			test.expect(1);
 			// tests here
-			svg_to_png.convert(path.join("test", "files"), path.join( "test","output") )
+			svg_to_png.convert(path.resolve(path.join(__dirname, "files")), path.resolve(path.join( __dirname,"output")) )
 			.then( function(){
 				test.ok( fs.existsSync( path.join( "test", "output", "bear.png" ) ) );
 				test.done();
