@@ -18,9 +18,26 @@ svg_to_png.convert("input", "output") // async, returns promise
 ```
 
 ## Documentation
-.convert
+`.convert`
 
-Takes input, output special folder, and an options hash that include:
+### Required Params
+
+#### Input
+Type: `String` or `Array`
+
+The Input can be one of: A `String` that is the file being converted, a
+`String` that is a directory of files to be converted, or an `Array` of
+files to convert
+
+#### Output
+Type: `String`
+
+Output folder
+
+### Optional Params
+
+#### Options
+Type: `Object`
 
 * pngfolder: A subdirectory (in the output) you might want the files to go into, normally ""
 * defaultWidth: normally 400px
@@ -33,8 +50,14 @@ Check out the tests!
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-* v0.1.0 - Hey, released this thing
+* v1.0.0 - Take arrays, add minification capabilities
+* v0.7.0 - Update Phantom for cert error
+* v0.6.0 - Phantom bug fix
+* v0.5.0 - Error Handling
+* v0.4.0 - File separators for Windows
+* v0.3.0 - Tests and Bug Fixes
 * v0.2.0 - API change
+* v0.1.0 - Hey, released this thing
 
 ## License
 Copyright (c) 2013 Jeffrey Lembeck/Filament Group  
