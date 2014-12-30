@@ -119,4 +119,32 @@
 			});
 		}
 	};
+
+	exports.convertAndMinify = {
+		setUp: function(done) {
+			// setup here
+			done();
+		},
+		tearDown: function( done ){
+			if( fs.existsSync( path.join( "test", "output", "bear.png" )) ){
+				fs.unlinkSync( path.join("test", "output", "bear.png" ) );
+			}
+			if( fs.existsSync( path.join( "test", "outputmin", "bear.png" )) ){
+				fs.unlinkSync( path.join("test", "outputmin", "bear.png" ) );
+			}
+			done();
+		},
+		'two args - first is file': function(test) {
+			test.expect(1);
+			// tests here
+			svg_to_png.convert(path.join("test", "files", "bear.svg"), path.join( "test","output") )
+			.then( function(output){
+				svg_to_png.minify(path.resolve(output), path.join( "test", "outputmin" ) )
+				.then(function(){
+					test.ok( fs.existsSync( path.join( "test", "outputmin", "bear.png" ) ) );
+					test.done();
+				});
+			});
+		}
+	};
 }(typeof exports === 'object' && exports || this));
