@@ -1,7 +1,7 @@
 {
 	"name": "svg-to-png",
 	"description": "Converts SVGs to PNGs",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"homepage": "https://github.com/filamentgroup/svg-to-png",
 	"author": {
 		"name": "Jeffrey Lembeck/Filament Group",
