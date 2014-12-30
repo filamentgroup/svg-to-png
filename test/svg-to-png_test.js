@@ -129,7 +129,7 @@
 		}
 	};
 
-	exports.convertAndMinify = {
+	exports.convertAndCompress = {
 		setUp: function(done) {
 			// setup here
 			done();
@@ -144,7 +144,7 @@
 			test.expect(1);
 			// tests here
 			svg_to_png.convert(path.join("test", "files", "bear.svg"), path.join( "test","output"), {
-				minify: true
+				compress: true
 			})
 			.then( function(){
 				test.ok( fs.existsSync( path.join( "test", "output", "bear.png" ) ) );

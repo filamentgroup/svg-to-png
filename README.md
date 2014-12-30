@@ -42,6 +42,9 @@ Type: `Object`
 * pngfolder: A subdirectory (in the output) you might want the files to go into, normally ""
 * defaultWidth: normally 400px
 * defaultHeight: normally 300px
+* compress: Default `false`, if `true`, will compress your png file
+  using optipng
+* optimizationLevel: Default `3`, if compress is set to `true`, this will set the optimationLevel for optipng
 
 ## Examples
 Check out the tests!
