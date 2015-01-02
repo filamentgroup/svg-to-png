@@ -152,4 +152,48 @@
 			});
 		}
 	};
+
+	exports.convertAndCompressLarge = {
+		setUp: function(done) {
+			// setup here
+			done();
+		},
+		tearDown: function( done ){
+			var outputFiles = fs.readdirSync( path.resolve( path.join( __dirname, "output" ) ) )
+			.map( function( file ){
+				return path.resolve( path.join( __dirname, "output", file ) );
+			});
+
+			outputFiles.forEach(function( file ){
+				if( fs.lstatSync( file ).isFile() ){
+					fs.unlinkSync( file );
+				} else {
+					fs.rmdirSync( file );
+				}
+			});
+			done();
+		},
+		'two args - first is arr': function(test) {
+			test.expect(1);
+			// tests here
+			var bigDir = fs.readdirSync( path.resolve( path.join( __dirname, "big" ) ) )
+			.map(function(file){
+				return path.resolve( path.join( __dirname, "big", file ) );
+			}),
+
+			bigDirSVGs = bigDir.filter( function( file ){
+				return path.extname(file) === ".svg";
+			});
+
+			svg_to_png.convert(
+				bigDirSVGs,
+				path.join( "test","output"), {
+				compress: true
+			})
+			.then( function(){
+				test.ok( true );
+				test.done();
+			});
+		}
+	};
 }(typeof exports === 'object' && exports || this));
