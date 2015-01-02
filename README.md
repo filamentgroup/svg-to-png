@@ -27,7 +27,11 @@ Type: `String` or `Array`
 
 The Input can be one of: A `String` that is the file being converted, a
 `String` that is a directory of files to be converted, or an `Array` of
-files to convert
+files to convert.
+
+Note: The files passed in MUST ALL be SVGs. If you want to pass in a
+directory that is not all SVGs, use `fs.readdir`, filter the results,
+and pass those in. An error will be thrown otherwise.
 
 #### Output
 Type: `String`
