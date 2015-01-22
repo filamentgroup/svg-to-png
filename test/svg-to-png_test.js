@@ -70,7 +70,7 @@
 		'two args - first is dir w/ pngout': function(test) {
 			test.expect(1);
 			// tests here
-			svg_to_png.convert(path.resolve(path.join(__dirname, "files")), path.resolve(path.join(__dirname, "output")), { pngfolder: "png" } )
+			svg_to_png.convert(path.resolve(path.join(__dirname, "files")), path.resolve(path.join(__dirname, "output", "png")) )
 			.then( function(){
 				test.ok( fs.existsSync( path.join( "test", "output", "png", "bear.png" )) );
 				test.done();
@@ -121,7 +121,7 @@
 		'two args - first is file w/ pngout': function(test) {
 			test.expect(1);
 			// tests here
-			svg_to_png.convert(path.join("test", "files", "bear.svg"), path.join("test", "output"), { pngfolder: "png" } )
+			svg_to_png.convert(path.join("test", "files", "bear.svg"), path.join("test", "output", "png") )
 			.then( function(){
 				test.ok( fs.existsSync( path.join( "test", "output", "png", "bear.png" )) );
 				test.done();

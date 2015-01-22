@@ -29,7 +29,6 @@
 		'constructor': function( test ){
 			test.equal( this.pfile.filename, "bear.svg", "The file should be named bear.svg" );
 			test.equal( this.pfile.pathdir, fs.workingDirectory + fs.separator + "test" + fs.separator + "files", "The pathdir isn't correct" );
-			test.ok( this.pfile.isSvg, "It's supposed to be an svg" );
 			test.equal( this.pfile.filenamenoext, "bear", "The filenamenoext should be bear" );
 		},
 		'setImageData': function( test ){

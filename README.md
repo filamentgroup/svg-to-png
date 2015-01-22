@@ -43,7 +43,6 @@ Output folder
 #### Options
 Type: `Object`
 
-* pngfolder: A subdirectory (in the output) you might want the files to go into, normally ""
 * defaultWidth: normally 400px
 * defaultHeight: normally 300px
 * compress: Default `false`, if `true`, will compress your png file
@@ -57,6 +56,8 @@ Check out the tests!
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* v2.0.0 - Breaking change, pngfolder no longer works nor is there at
+	all as an option. Relic of a time where it was necessary.
 * v1.0.0 - Take arrays, add minification capabilities
 * v0.7.0 - Update Phantom for cert error
 * v0.6.0 - Phantom bug fix
