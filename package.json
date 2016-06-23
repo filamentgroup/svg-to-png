@@ -15,12 +15,7 @@
   "bugs": {
     "url": "https://github.com/filamentgroup/svg-to-png/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/filamentgroup/svg-to-png/blob/master/LICENSE-MIT"
-    }
-  ],
+  "license": "MIT",
   "main": "lib/svg-to-png",
   "engines": {
     "node": ">= 0.8.0"
