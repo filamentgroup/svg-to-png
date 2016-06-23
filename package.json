@@ -24,7 +24,7 @@
     "test": "grunt nodeunit"
   },
   "dependencies": {
-    "phantomjs": "^2.1.7"
+    "phantomjs-prebuilt": "^2.1.7"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
