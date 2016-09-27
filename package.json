@@ -32,6 +32,7 @@
     "grunt-contrib-nodeunit": "^1.0.0",
     "grunt-contrib-qunit": "^1.2.0",
     "grunt-contrib-watch": "^1.0.0",
+    "image-size": "^0.5.0",
     "phantom-unit": "^1.0.1"
   },
   "optionalDependencies": {
