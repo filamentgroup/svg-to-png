@@ -25,8 +25,8 @@
 
 	var path = require( 'path' );
 	var fs = require( 'fs' );
+	var sizeOf = require( 'image-size' );
 	var svg_to_png = require(path.join( "..", "lib", "svg-to-png.js") );
-
 
 	exports.convert = {
 		setUp: function(done) {
@@ -77,6 +77,70 @@
 			});
 		}
 	};
+
+	exports.checkOutputSize = {
+		setUp: function(done) {
+			// setup here
+			done();
+		},
+		tearDown: function( done ){
+			if( fs.existsSync( path.join( "test", "output", "Internet-44px-width-44px-height.png" )) ){
+				fs.unlinkSync( path.join( "test", "output", "Internet-44px-width-44px-height.png" ) );
+			}
+			if( fs.existsSync( path.join( "test", "output", "Internet-no-width-no-height.png" )) ){
+				fs.unlinkSync( path.join( "test", "output", "Internet-no-width-no-height.png" ) );
+			}
+			if( fs.existsSync( path.join( "test", "output", "Internet-100pct-width-100pct-height.png" )) ){
+				fs.unlinkSync( path.join( "test", "output", "Internet-100pct-width-100pct-height.png" ) );
+			}
+			if( fs.existsSync( path.join( "test", "output", "Internet-100pct-width-100pct-height-no-viewbox.png" )) ){
+				fs.unlinkSync( path.join( "test", "output", "Internet-100pct-width-100pct-height-no-viewbox.png" ) );
+			}
+			done();
+		},
+		'px width/height, and viewbox': function(test) {
+			test.expect(1);
+			// tests here
+			svg_to_png.convert( path.join("test", "viewbox", "Internet-44px-width-44px-height.svg" ), path.join( "test", "output" ) )
+			.then( function(){
+				sizeOf(path.join( "test", "output", "Internet-44px-width-44px-height.png" ), function (err, dimensions) {
+					test.ok(dimensions.width === 44 && dimensions.height === 44);
+					test.done();
+				});
+			});
+		},
+		'no width/height, and viewbox': function(test) {
+			// tests here
+			svg_to_png.convert( path.join("test", "viewbox", "Internet-no-width-no-height.svg" ), path.join( "test", "output" ) )
+			.then( function(){
+				sizeOf(path.join( "test", "output", "Internet-no-width-no-height.png" ), function (err, dimensions) {
+					test.ok(dimensions.width === 400 && dimensions.height === 300);
+					test.done();
+				});
+			});
+		},
+		'100% width/height, and viewbox': function(test) {
+			// tests here
+			svg_to_png.convert( path.join("test", "viewbox", "Internet-100pct-width-100pct-height.svg" ), path.join( "test", "output" ) )
+			.then( function(){
+				sizeOf(path.join( "test", "output", "Internet-100pct-width-100pct-height.png" ), function (err, dimensions) {
+					test.ok(dimensions.width === 44 && dimensions.height === 44);
+					test.done();
+				});
+			});
+		},
+		'% width/height, and no viewbox': function(test) {
+			// tests here
+			svg_to_png.convert( path.join("test", "viewbox", "Internet-100pct-width-100pct-height-no-viewbox.svg" ), path.join( "test", "output" ) )
+			.then( function(){
+				sizeOf(path.join( "test", "output", "Internet-100pct-width-100pct-height-no-viewbox.png" ), function (err, dimensions) {
+					test.ok(dimensions.width === 100 && dimensions.height === 100);
+					test.done();
+				});
+			});
+		}
+	};
+
 	exports.convertWithDir = {
 		setUp: function(done) {
 			// setup here
