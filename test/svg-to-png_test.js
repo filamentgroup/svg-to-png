@@ -34,11 +34,11 @@
 			done();
 		},
 		tearDown: function( done ){
-			if( fs.existsSync( path.join( "test", "output", "bear.png" )) ){
-				fs.unlinkSync( path.join("test", "output", "bear.png") );
+			if( fs.existsSync( path.join( __dirname, "output", "bear.png" )) ){
+				fs.unlinkSync( path.join(__dirname, "output", "bear.png") );
 			}
-			if( fs.existsSync( path.join( "test", "output", "png", "bear.png" )) ){
-				fs.unlinkSync( path.join( "test", "output", "png", "bear.png") );
+			if( fs.existsSync( path.join( __dirname, "output", "png", "bear.png" )) ){
+				fs.unlinkSync( path.join( __dirname, "output", "png", "bear.png") );
 			}
 			done();
 		},
@@ -63,7 +63,7 @@
 			// tests here
 			svg_to_png.convert(path.resolve(path.join(__dirname, "files")), path.resolve(path.join( __dirname,"output")) )
 			.then( function(){
-				test.ok( fs.existsSync( path.join( "test", "output", "bear.png" ) ) );
+				test.ok( fs.existsSync( path.join( __dirname, "output", "bear.png" ) ) );
 				test.done();
 			});
 		},
@@ -72,7 +72,7 @@
 			// tests here
 			svg_to_png.convert(path.resolve(path.join(__dirname, "files")), path.resolve(path.join(__dirname, "output", "png")) )
 			.then( function(){
-				test.ok( fs.existsSync( path.join( "test", "output", "png", "bear.png" )) );
+				test.ok( fs.existsSync( path.join( __dirname, "output", "png", "bear.png" )) );
 				test.done();
 			});
 		}
@@ -83,11 +83,11 @@
 			done();
 		},
 		tearDown: function( done ){
-			if( fs.existsSync( path.join( "test", "output", "bear.png" )) ){
-				fs.unlinkSync( path.join("test", "output", "bear.png") );
+			if( fs.existsSync( path.join( __dirname, "output", "bear.png" )) ){
+				fs.unlinkSync( path.join(__dirname, "output", "bear.png") );
 			}
-			if( fs.existsSync( path.join( "test", "output", "png", "bear.png" )) ){
-				fs.unlinkSync( path.join( "test", "output", "png", "bear.png") );
+			if( fs.existsSync( path.join( __dirname, "output", "png", "bear.png" )) ){
+				fs.unlinkSync( path.join( __dirname, "output", "png", "bear.png") );
 			}
 			done();
 		},
@@ -112,18 +112,21 @@
 		'two args - first is file': function(test) {
 			test.expect(1);
 			// tests here
-			svg_to_png.convert(path.join("test", "files", "bear.svg"), path.join( "test","output") )
+			svg_to_png.convert(path.join(__dirname, "files", "bear.svg"), path.join(__dirname,"output") )
 			.then( function(){
-				test.ok( fs.existsSync( path.join( "test", "output", "bear.png" ) ) );
+				test.ok( fs.existsSync( path.join(__dirname, "output", "bear.png" ) ) );
 				test.done();
-			});
+      })
+      .catch(err => {
+        console.log(err);
+      });
 		},
 		'two args - first is file w/ pngout': function(test) {
 			test.expect(1);
 			// tests here
-			svg_to_png.convert(path.join("test", "files", "bear.svg"), path.join("test", "output", "png") )
+			svg_to_png.convert(path.join(__dirname, "files", "bear.svg"), path.join(__dirname, "output", "png") )
 			.then( function(){
-				test.ok( fs.existsSync( path.join( "test", "output", "png", "bear.png" )) );
+				test.ok( fs.existsSync( path.join(__dirname, "output", "png", "bear.png" )) );
 				test.done();
 			});
 		}
@@ -135,19 +138,19 @@
 			done();
 		},
 		tearDown: function( done ){
-			if( fs.existsSync( path.join( "test", "output", "bear.png" )) ){
-				fs.unlinkSync( path.join("test", "output", "bear.png" ) );
+			if( fs.existsSync( path.join( __dirname, "output", "bear.png" )) ){
+				fs.unlinkSync( path.join(__dirname, "output", "bear.png" ) );
 			}
 			done();
 		},
 		'two args - first is file': function(test) {
 			test.expect(1);
 			// tests here
-			svg_to_png.convert(path.join("test", "files", "bear.svg"), path.join( "test","output"), {
+			svg_to_png.convert(path.join(__dirname, "files", "bear.svg"), path.join( __dirname,"output"), {
 				compress: true
 			})
 			.then( function(){
-				test.ok( fs.existsSync( path.join( "test", "output", "bear.png" ) ) );
+				test.ok( fs.existsSync( path.join( __dirname, "output", "bear.png" ) ) );
 				test.done();
 			});
 		}
@@ -187,7 +190,7 @@
 
 			svg_to_png.convert(
 				bigDirSVGs,
-				path.join( "test","output"), {
+				path.join( __dirname,"output"), {
 				compress: true
 			})
 			.then( function(){
