@@ -117,9 +117,7 @@
 				test.ok( fs.existsSync( path.join(__dirname, "output", "bear.png" ) ) );
 				test.done();
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(console.log);
 		},
 		'two args - first is file w/ pngout': function(test) {
 			test.expect(1);
