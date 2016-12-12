@@ -24,6 +24,7 @@
     "test": "grunt nodeunit"
   },
   "dependencies": {
+    "imagemin": "^5.2.2",
     "phantomjs-prebuilt": "^2.1.7"
   },
   "devDependencies": {
@@ -34,9 +35,6 @@
     "grunt-contrib-watch": "^1.0.0",
     "image-size": "^0.5.0",
     "phantom-unit": "^1.0.1"
-  },
-  "optionalDependencies": {
-    "imagemin": "5.2.2"
   },
   "keywords": []
 }
