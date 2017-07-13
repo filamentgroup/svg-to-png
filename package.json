@@ -36,7 +36,7 @@
     "phantom-unit": "^1.0.1"
   },
   "optionalDependencies": {
-    "imagemin": "3.1.0"
+    "imagemin": "4.0.0"
   },
   "keywords": []
 }
