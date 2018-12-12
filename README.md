@@ -43,11 +43,12 @@ Output folder
 #### Options
 Type: `Object`
 
-* defaultWidth: normally 400px
-* defaultHeight: normally 300px
-* compress: Default `false`, if `true`, will compress your png file
+* `defaultWidth`: normally 400px
+* `defaultHeight`: normally 300px
+* `compress`: Default `false`, if `true`, will compress your png file
   using optipng
-* optimizationLevel: Default `3`, if compress is set to `true`, this will set the optimationLevel for optipng
+* `optimizationLevel`: Default `3`, if compress is set to `true`, this will set the optimationLevel for optipng
+* `debug`: enables console log output
 
 ## Examples
 Check out the tests!
