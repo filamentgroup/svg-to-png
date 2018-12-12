@@ -166,12 +166,10 @@
 		'two args - first is file that doesn\'t exist in array': function(test) {
 			test.expect(1);
 			// tests here
-			svg_to_png.convert( [path.resolve( path.join(__dirname, "files", "foo.svg") )], path.resolve( path.join( __dirname,"output") ) )
-			.then( function(){
-			}, function(err){
-				test.ok( err );
-				test.done();
+			test.throws(function() {
+				svg_to_png.convert( [path.resolve( path.join(__dirname, "files", "foo.svg") )], path.resolve( path.join( __dirname,"output") ) );
 			});
+			test.done();
 		},
 		'two args - first is file': function(test) {
 			test.expect(1);
