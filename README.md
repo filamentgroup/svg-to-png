@@ -56,6 +56,14 @@ Check out the tests!
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
+## Roadmap
+
+This repository is now using [lodash style issue management](https://twitter.com/samselikoff/status/991395669016436736) for enhancements. This means enhancement issues will now be closed instead of leaving them open.
+
+The enhancement backlog can be found here: https://github.com/filamentgroup/svg-to-png/issues?utf8=%E2%9C%93&q=label%3Aneeds-votes+sort%3Areactions-%2B1-desc+
+
+Don’t forget to upvote the top comment of each issue with 👍!
+
 ## Release History
 * v2.0.0 - Breaking change, pngfolder no longer works nor is there at
 	all as an option. Relic of a time where it was necessary.
